@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+
+    rectangle test{
+        usecase "chọn bài kiểm tra" as uc 
+        usecase "kiểm tra lại" as uc1 
+}
+User-- uc
+User -- uc1
+
+@enduml

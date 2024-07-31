@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+
+    rectangle test{
+        usecase "xem" as uc 
+        usecase "chọn" as uc1 
+}
+User-- uc
+User -- uc1
+
+@enduml

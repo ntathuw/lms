@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+    rectangle test{
+        usecase "Tạo bài kiểm tra" as uc
+        usecase " Filter " as uc1 
+        usecase  "Tittle" as uc2
+        usecase "Level" as uc3
+}
+Admin -- uc
+uc .--> uc1:extend
+uc2 --|> uc1
+uc3 --|> uc1 
+
+
+
+
+@enduml
