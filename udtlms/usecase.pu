@@ -1,0 +1,62 @@
+@startuml
+left to right direction
+
+package UDTLMS {
+    rectangle Roadmap {
+        usecase "Edit the roadmap" as uc2
+        usecase "Create the roadmap" as uc3
+    }
+    rectangle Dashboard {
+        usecase "Track the progress" as uc5
+    }
+    rectangle Lesson {
+        usecase "Create the lesson" as uc4
+        usecase "Edit the lesson " as uc8
+        usecase "Mark the lesson completed" as uc9
+    }
+    rectangle Test {
+        usecase "Create the test" as uc1
+        usecase "Grade the test" as uc7 
+        usecase "Take the test" as uc10
+        usecase "View the mark" as uc12
+        usecase "View the comment" as uc13
+        usecase "Comment" as uc16
+
+    }
+    rectangle Course {
+        usecase "Select the course" as uc14
+        usecase "Create the course" as uc15
+    }
+}
+
+package Authority {
+    actor Admin 
+    actor Lecturer
+}
+
+Admin --- uc2
+Admin --- uc3
+
+Admin --- uc5
+
+Admin --- uc4
+Admin --- uc8
+
+Admin --- uc1
+Admin --- uc7
+Lecturer ---- uc7
+Lecturer ---- uc1
+
+Admin ---- uc16
+Admin ---- uc15
+Lecturer ---- uc16
+
+actor User
+uc5 - User
+uc9 - User
+uc10 -- User
+uc12 -- User
+uc13 -- User 
+uc14 -- User
+
+@enduml 
