@@ -1,0 +1,63 @@
+@startuml
+left to right direction
+
+package holidaymng {
+    rectangle Overview {
+        usecase "view personal statistic" as uc1
+        usecase "view heat map" as uc2
+    }
+    rectangle report {
+        usecase "view report" as uc3
+    }
+    rectangle application {
+        usecase "create absence application" as uc4
+        usecase "consider absence application" as uc5
+        usecase "view history absence" as uc7
+    }
+    usecase "edit nominal allowance" as uc6
+    usecase "filter" as uc8
+
+}
+    
+package Authority {
+    actor Admin 
+    actor Supervisor 
+    actor HR 
+}
+actor User 
+
+Authority --- uc1
+Authority --- uc2
+uc1 .--> uc8:include
+uc2 .--> uc8:include
+
+uc1 --- User
+
+Authority -- uc3
+uc3 .--> uc8:include
+
+uc4 --- User
+HR --- uc4
+Supervisor --- uc4
+
+Authority --- uc5
+uc7 --- User
+HR -- uc7
+Supervisor --- uc7
+
+Admin -- uc6
+HR -- uc6
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml 
