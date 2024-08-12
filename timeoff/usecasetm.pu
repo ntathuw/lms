@@ -8,6 +8,7 @@ package holidaymng {
     }
     rectangle report {
         usecase "view report" as uc3
+        usecase "export absence history" as uc9
     }
     rectangle application {
         usecase "create absence application" as uc4
@@ -30,7 +31,7 @@ Authority --- uc1
 Authority --- uc2
 uc1 .--> uc8:include
 uc2 .--> uc8:include
-
+Authority --- uc6
 uc1 --- User
 
 Authority -- uc3
@@ -38,26 +39,13 @@ uc3 .--> uc8:include
 
 uc4 --- User
 HR --- uc4
-Supervisor --- uc4
+Supervisor -- uc4
 
 Authority --- uc5
 uc7 --- User
 HR -- uc7
 Supervisor --- uc7
 
-Admin -- uc6
-HR -- uc6
-
-
-
-
-
-
-
-
-
-
-
-
-
+HR --- uc9
+Admin --- uc9 
 @enduml 
