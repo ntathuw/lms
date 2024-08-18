@@ -1,51 +1,59 @@
 @startuml
 left to right direction
-
-package holidaymng {
-    rectangle Overview {
-        usecase "view personal statistic" as uc1
-        usecase "view heat map" as uc2
+package leavemanagement {
+    rectangle leaveapplication {
+        usecase "create leave application" as uc1
+        usecase "view leave application" as uc9
+    }
+    rectangle leaverequest {
+        usecase "consider leave request" as uc2
+        usecase "export leave request" as uc3
     }
     rectangle report {
-        usecase "view report" as uc3
-        usecase "export absence history" as uc9
+        usecase "view personal leave statistic " as uc4
+        usecase "view user's leave statistic" as uc8
+        usecase "view leave history" as uc5
     }
-    rectangle application {
-        usecase "create absence application" as uc4
-        usecase "consider absence application" as uc5
-        usecase "view history absence" as uc7
+    rectangle heatmap {
+        usecase "view heatemap" as uc6
     }
-    usecase "edit nominal allowance" as uc6
-    usecase "filter" as uc8
-
+    rectangle overview {
+        usecase "view calendar" as uc7
+        usecase "view leave type analyst" as uc10
+    }
 }
-    
-package Authority {
+rectangle Authority {
     actor Admin 
-    actor Supervisor 
-    actor HR 
+    actor Supervisor
+    actor HR
 }
 actor User 
+HR --- uc1
+Supervisor --- uc1
+uc1 --- User 
 
-Authority --- uc1
 Authority --- uc2
-uc1 .--> uc8:include
-uc2 .--> uc8:include
-Authority --- uc6
-uc1 --- User
+HR --- uc3
+Admin --- uc3
 
-Authority -- uc3
-uc3 .--> uc8:include
-
-uc4 --- User
+Authority -- uc7
+uc4 ---- User
 HR --- uc4
-Supervisor -- uc4
+Supervisor --- uc4
 
-Authority --- uc5
-uc7 --- User
-HR -- uc7
-Supervisor --- uc7
+Admin --- uc8
+HR --- uc8
 
 HR --- uc9
-Admin --- uc9 
+Supervisor --- uc9
+User --- uc9
+
+Authority -- uc6
+
+uc5 --- User
+HR --- uc5
+Supervisor --- uc5
+
+HR --- uc10
+Admin --- uc10
 @enduml 
